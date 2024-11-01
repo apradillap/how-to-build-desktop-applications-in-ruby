@@ -3,7 +3,11 @@
 
 ([If you are looking for the RubyConf 2023 longer version of the workshop ("How To Build Desktop Applications in Ruby"), click here!](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/tree/rubyconf2023))
 
-The full material of this workshop will be released on day 2 of RubyConf 2024.
+The full material of this workshop will be released on day 2 of RubyConf 2024 (Thu, Nov 14, 2024).
+
+Mac | Windows | Linux
+----|---------|------
+![glimmer-dsl-libui-mac-control-gallery.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-mac-control-gallery.png) | ![glimmer-dsl-libui-windows-control-gallery.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-windows-control-gallery.png) | ![glimmer-dsl-libui-linux-control-gallery.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-linux-control-gallery.png)
 
 Please star ("⭐️") this project and [Glimmer DSL for LibUI](https://github.com/AndyObtiva/glimmer-dsl-libui) to save for later reference with regards to Ruby Desktop Development. [Glimmer DSL for LibUI](https://github.com/AndyObtiva/glimmer-dsl-libui) was used in this workshop because it is the simplest and quickest to setup in standard Ruby (aka MRI / CRuby), but the lessons learned are applicable to other [Glimmer GUI DSLs](https://github.com/AndyObtiva/glimmer#glimmer-dsl-comparison-table) (with some syntax variations), including more mature ones like [Glimmer DSL for SWT](https://github.com/AndyObtiva/glimmer-dsl-swt), which might be better for more serious usage after finishing the workshop. If you discover any issues or get stuck while going through the material of this repo, please [report them in GitHub issues](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/issues) or discuss in the [Glimmer Gitter Chat](https://app.gitter.im/#/room/#AndyObtiva_glimmer:gitter.im).
 
