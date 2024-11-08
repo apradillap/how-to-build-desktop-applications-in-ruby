@@ -1,9 +1,7 @@
 # How To Build Basic Desktop Applications in Ruby
 ## RubyConf 2024 Workshop Code Exercises by Andy Maleh
 
-([If you are looking for the RubyConf 2023 longer version of the workshop ("How To Build Desktop Applications in Ruby"), click here!](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/tree/rubyconf2023))
-
-The full material of this workshop will be released on day 2 of RubyConf 2024 (Thu, Nov 14, 2024).
+The full material of this workshop will be released on day 2 of RubyConf 2024 (Thursday, Nov 14, 2024).
 
 Mac | Windows | Linux
 ----|---------|------
@@ -27,7 +25,7 @@ Please make sure to follow these instructions on your laptop successfully before
 Run:
 
 ```
-gem install glimmer-dsl-libui -v0.12.3
+gem install glimmer-dsl-libui -v0.12.4
 ```
 
 3- Load Glimmer Meta-Example to test gem
@@ -44,7 +42,21 @@ Mac | Windows | Linux
 ----|---------|------
 ![glimmer-dsl-libui-mac-meta-example.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-mac-meta-example.png) | ![glimmer-dsl-libui-windows-meta-example.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-windows-meta-example.png) | ![glimmer-dsl-libui-linux-meta-example.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-linux-meta-example.png)
 
-4- (Optional) Scaffold Application
+4- Clone repository
+
+Clone the GitHub repository to avoid running into issues if WIFI service is unreliable at the event:
+
+```
+https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby.git
+```
+
+This will download the [presentation slides](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/raw/refs/heads/rubyconf2024/RubyConf%202024%20-%20How%20To%20Build%20Basic%20Desktop%20Applications%20in%20Ruby%20-%20Andy%20Maleh.pptx).
+
+On the morning of day 2 (Thursday, Nov 14, 2024), pull the latest version of the repository before you go into the workshop to get all the code exercises.
+
+5- (Optional) Scaffold Application
+
+This step is helpful for the Hack Day event that follows the 2-hour workshop, but is not necessary for the workshop itself and can be skipped till you get to the Hack Day event if you run into any issues with it.
 
 Application Scaffolding relies on the juwelier Ruby gem, which expects a local Git config of:
 - `user.name` (`git config --global user.name "FirstName LastName"`)
