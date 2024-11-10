@@ -9,61 +9,54 @@ def update_address_summary
 end
 
 window('Address Form') {
-  content_size 400, 20
+  content_size 500, 20
   margined true
   
-  vertical_box {
-    horizontal_box {
-      label('Name')
-      @name_entry = entry {
-        on_changed do
-          update_address_summary
-        end
-      }
+  form {
+    @name_entry = entry {
+      label 'Name'
+      
+      on_changed do
+        update_address_summary
+      end
     }
     
-    horizontal_box {
-      label('Street')
-      @street_entry = entry {
-        on_changed do
-          update_address_summary
-        end
-      }
+    @street_entry = entry {
+      label 'Street'
+      
+      on_changed do
+        update_address_summary
+      end
     }
     
-    horizontal_box {
-      label('City')
-      @city_entry = entry {
-        on_changed do
-          update_address_summary
-        end
-      }
+    @city_entry = entry {
+      label 'City'
+      
+      on_changed do
+        update_address_summary
+      end
     }
     
-    horizontal_box {
-      label('State')
-      @state_entry = entry {
-        on_changed do
-          update_address_summary
-        end
-      }
+    @state_entry = entry {
+      label 'State'
+      
+      on_changed do
+        update_address_summary
+      end
     }
     
-    horizontal_box {
-      label('Zip')
-      @zip_entry = entry {
-        on_changed do
-          update_address_summary
-        end
-      }
+    @zip_entry = entry {
+      label 'Zip'
+      
+      on_changed do
+        update_address_summary
+      end
     }
     
-    horizontal_box {
-      @billing_and_shipping_checkbox = checkbox('Billing & Shipping') {
-        on_toggled do
-          update_address_summary
-        end
-      }
+    @billing_and_shipping_checkbox = checkbox('Billing & Shipping') {
+      on_toggled do
+        update_address_summary
+      end
     }
     
     @summary_label = label
