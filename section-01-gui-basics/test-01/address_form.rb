@@ -3,7 +3,7 @@ require 'glimmer-dsl-libui'
 include Glimmer
 
 def update_address_summary
-  address_summary = [@name_entry.text, @street_entry.text, @city_entry.text, @state_entry.text, @zip_entry.text].reject(&:empty?).join(', ')
+  address_summary = [@full_name_entry.text, @street_entry.text, @city_entry.text, @state_entry.text, @zip_entry.text].reject(&:empty?).join(', ')
   address_summary += ' (Billing & Shipping)' if @billing_and_shipping_checkbox.checked?
   @summary_label.text = address_summary
 end
@@ -13,8 +13,8 @@ window('Address Form') {
   margined true
   
   form {
-    @name_entry = entry {
-      label 'Name'
+    @full_name_entry = entry {
+      label 'Full Name'
       
       on_changed do
         update_address_summary
