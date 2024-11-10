@@ -2,10 +2,11 @@ require 'glimmer-dsl-libui'
 
 class Address
   ATTRIBUTES = [:name, :street, :city, :state, :zip]
+  
   attr_accessor *ATTRIBUTES
   
-  def text
-    [name, street, city, state, zip].compact.reject(&:empty?).join(', ')
+  def summary
+    ATTRIBUTES.map(&method(:send)).compact.reject(&:empty?).join(', ')
   end
 end
 
@@ -36,7 +37,7 @@ class AddressForm
       label {
         stretchy false
         
-        text <= [address, :text]
+        text <= [address, :summary, computed_by: Address::ATTRIBUTES]
       }
     }
   }

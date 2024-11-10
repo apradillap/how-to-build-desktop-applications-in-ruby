@@ -1,38 +1,12 @@
 require 'glimmer-dsl-libui'
 
-class AddressFormModel
-  attr_accessor :text
-  attr_reader :name, :street, :city, :state, :zip
+class Address
+  ATTRIBUTES = [:name, :street, :city, :state, :zip]
   
-  def name=(value)
-    @name = value
-    update_text
-  end
+  attr_accessor *ATTRIBUTES
   
-  def street=(value)
-    @street = value
-    update_text
-  end
-  
-  def city=(value)
-    @city = value
-    update_text
-  end
-  
-  def state=(value)
-    @state = value
-    update_text
-  end
-  
-  def zip=(value)
-    @zip = value
-    update_text
-  end
-  
-  private
-  
-  def update_text
-    self.text = [name, street, city, state, zip].compact.reject(&:empty?).join(', ')
+  def summary
+    ATTRIBUTES.map(&method(:send)).compact.reject(&:empty?).join(', ')
   end
 end
 
@@ -40,7 +14,7 @@ class AddressFormView
   include Glimmer
 
   def initialize
-    @address_form_model = AddressFormModel.new
+    @address = Address.new
     create_window
   end
   
@@ -51,10 +25,10 @@ class AddressFormView
       
       vertical_box {
         form {
-          [:name, :street, :city, :state, :zip].each do |attribute|
+          Address::ATTRIBUTES.each do |attribute|
             entry {
               label attribute.to_s.capitalize
-              text <=> [@address_form_model, attribute]
+              text <=> [@address, attribute]
             }
           end
         }
@@ -62,7 +36,7 @@ class AddressFormView
         label {
           stretchy false
           
-          text <= [@address_form_model, :text]
+          text <= [@address, :summary, computed_by: Address::ATTRIBUTES]
         }
       }
     }

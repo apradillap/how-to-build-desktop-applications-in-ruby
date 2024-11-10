@@ -1,38 +1,12 @@
 require 'glimmer-dsl-libui'
 
 class Address
-  attr_accessor :text
-  attr_reader :name, :street, :city, :state, :zip
+  ATTRIBUTES = [:name, :street, :city, :state, :zip]
   
-  def name=(value)
-    @name = value
-    update_text
-  end
+  attr_accessor *ATTRIBUTES
   
-  def street=(value)
-    @street = value
-    update_text
-  end
-  
-  def city=(value)
-    @city = value
-    update_text
-  end
-  
-  def state=(value)
-    @state = value
-    update_text
-  end
-  
-  def zip=(value)
-    @zip = value
-    update_text
-  end
-  
-  private
-  
-  def update_text
-    self.text = [name, street, city, state, zip].compact.reject(&:empty?).join(', ')
+  def summary
+    ATTRIBUTES.map(&method(:send)).compact.reject(&:empty?).join(', ')
   end
 end
 
@@ -95,7 +69,7 @@ class DynamicAddressForms
             @user.addresses.each do |address|
               vertical_box {
                 form {
-                  [:name, :street, :city, :state, :zip].each do |attribute|
+                  Address::ATTRIBUTES.each do |attribute|
                     entry {
                       label attribute.to_s.capitalize
                       text <=> [address, attribute]
@@ -106,7 +80,7 @@ class DynamicAddressForms
                 label {
                   stretchy false
                   
-                  text <= [address, :text]
+                  text <= [address, :summary, computed_by: Address::ATTRIBUTES]
                 }
               }
             end
