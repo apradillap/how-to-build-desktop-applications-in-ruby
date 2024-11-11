@@ -42,10 +42,10 @@ class DynamicAddressForms
 
   def initialize
     @user = User.new
-    create_window
+    create_gui_body
   end
   
-  def create_window
+  def create_gui_body
     @window = window('Dynamic Address Forms') { |main_window|
       content_size 400, 200
       margined true

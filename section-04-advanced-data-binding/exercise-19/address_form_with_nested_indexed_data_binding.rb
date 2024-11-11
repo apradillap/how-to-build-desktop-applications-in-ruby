@@ -33,10 +33,10 @@ class AddressFormApp
     @user.addresses[1].city = 'San Diego'
     @user.addresses[1].state = 'CA'
     @user.addresses[1].zip = '92109'
-    create_window
+    create_gui_body
   end
   
-  def create_window
+  def create_gui_body
     @window = window('Address Form with Nested Indexed Data-Binding') { |main_window|
       content_size 400, 200
       margined true

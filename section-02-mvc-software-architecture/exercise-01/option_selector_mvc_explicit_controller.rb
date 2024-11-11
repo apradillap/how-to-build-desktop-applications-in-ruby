@@ -42,11 +42,11 @@ class OptionSelectorView
   def initialize
     @option_selector_model = OptionSelectorModel.new
     @option_selector_controller = OptionSelectorController.new(@option_selector_model)
-    create_window
+    create_gui_body
     register_observers
   end
   
-  def create_window
+  def create_gui_body
     @window = window('Option Selector') {
       content_size 50, 20
       margined true

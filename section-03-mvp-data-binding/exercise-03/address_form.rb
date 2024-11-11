@@ -15,10 +15,10 @@ class AddressFormView
 
   def initialize
     @address = Address.new
-    create_window
+    create_gui_body
   end
   
-  def create_window
+  def create_gui_body
     @window = window('Address Form') {
       content_size 400, 200
       margined true
