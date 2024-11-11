@@ -1,3 +1,5 @@
+# TODO repeat computed data-binding sample for option selector
+
 require 'glimmer-dsl-libui'
 
 class OptionSelectorModel

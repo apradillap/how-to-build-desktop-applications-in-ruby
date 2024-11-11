@@ -1,3 +1,4 @@
+# TODO update sample to something better for on_write, on_read, and after_write
 require 'glimmer-dsl-libui'
 
 class OptionSelectorModel

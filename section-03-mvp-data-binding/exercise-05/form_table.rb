@@ -1,5 +1,6 @@
 require 'glimmer-dsl-libui'
 
+# TODO refactor to follow MVP correctly by extracting a presenter or extra model
 class FormTable
   Contact = Struct.new(:name, :email, :phone, :city, :state)
   

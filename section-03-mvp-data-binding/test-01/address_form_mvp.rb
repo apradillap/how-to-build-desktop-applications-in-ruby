@@ -1,6 +1,5 @@
 require 'glimmer-dsl-libui'
 
-# TODO make this the Section 3 Test (or Test 1 if we want to have multiple tests)
 class Address
   ATTRIBUTES = [:name, :street, :city, :state, :zip]
   
