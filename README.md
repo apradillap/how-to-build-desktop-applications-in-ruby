@@ -25,7 +25,7 @@ Please make sure to follow these instructions on your laptop successfully before
 Run:
 
 ```
-gem install glimmer-dsl-libui -v0.12.4
+gem install glimmer-dsl-libui -v0.12.5
 ```
 
 3- Load Glimmer Meta-Example to test gem
