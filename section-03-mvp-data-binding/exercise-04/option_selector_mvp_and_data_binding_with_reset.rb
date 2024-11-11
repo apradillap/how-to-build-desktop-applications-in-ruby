@@ -1,64 +1,21 @@
 require 'glimmer-dsl-libui'
 
 class OptionSelectorModel
-  attr_accessor :selected_options, :text
+  attr_accessor :option1, :option2, :option3
   
-  def initialize
-    @selected_options = []
-    @text = 'None'
-  end
-  
-  def option1
-    get_option(1)
-  end
-  
-  def option1=(value)
-    set_option(1, value)
-  end
-  
-  def option2
-    get_option(2)
-  end
-  
-  def option2=(value)
-    set_option(2, value)
-  end
-  
-  def option3
-    get_option(3)
-  end
-  
-  def option3=(value)
-    set_option(3, value)
+  def summary
+    selected_options = (1..3).select { |n| send("option#{n}") }
+    if selected_options.empty?
+      'None'
+    else
+      selected_options.map {|n| "Option #{n}" }.join(', ')
+    end
   end
   
   def reset
     self.option1 = false
     self.option2 = false
     self.option3 = false
-  end
-  
-  private
-  
-  def get_option(option_number)
-    @selected_options.include?(option_number)
-  end
-  
-  def set_option(option_number, value)
-    if value
-      @selected_options << option_number unless @selected_options.include?(option_number)
-    else
-      @selected_options.delete(option_number)
-    end
-    compute_text
-  end
-  
-  def compute_text
-    if @selected_options.empty?
-      self.text = 'None'
-    else
-      self.text = @selected_options.sort.map { |option_number| "Option #{option_number}" }.join(', ')
-    end
   end
 end
 
@@ -77,7 +34,7 @@ class OptionSelectorView
       
       vertical_box {
         label {
-          text <= [@option_selector_model, :text]
+          text <= [@option_selector_model, :summary, computed_by: [:option1, :option2, :option3]]
         }
         
         horizontal_box {

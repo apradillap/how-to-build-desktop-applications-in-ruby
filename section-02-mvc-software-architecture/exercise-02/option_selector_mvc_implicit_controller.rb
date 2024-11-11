@@ -15,7 +15,7 @@ class OptionSelectorModel
     end
   end
   
-  def to_s
+  def summary
     if @selected_options.empty?
       'None'
     else
@@ -57,7 +57,7 @@ class OptionSelectorView
     
   def register_observers
     observe(@option_selector_model, :selected_options) do
-      @selected_options_label.text = @option_selector_model.to_s
+      @selected_options_label.text = @option_selector_model.summary
     end
   end
   
