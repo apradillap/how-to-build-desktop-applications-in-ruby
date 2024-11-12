@@ -42,12 +42,12 @@ Mac | Windows | Linux
 ----|---------|------
 ![glimmer-dsl-libui-mac-meta-example.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-mac-meta-example.png) | ![glimmer-dsl-libui-windows-meta-example.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-windows-meta-example.png) | ![glimmer-dsl-libui-linux-meta-example.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-linux-meta-example.png)
 
-4- Clone repository
+4- Clone Repository
 
 Clone the GitHub repository to avoid running into issues if WIFI service is unreliable at the event:
 
 ```
-https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby.git
+git clone https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby.git
 ```
 
 This will download the [presentation slides](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/raw/refs/heads/rubyconf2024/RubyConf%202024%20-%20How%20To%20Build%20Basic%20Desktop%20Applications%20in%20Ruby%20-%20Andy%20Maleh.pptx).
