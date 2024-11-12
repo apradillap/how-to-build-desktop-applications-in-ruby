@@ -122,16 +122,6 @@ class FormTable
     
           editable true
           cell_rows <=> [@presenter, :contacts] # explicit data-binding to @presenter.contacts Model Array, auto-inferring model attribute names from underscored table column names by convention
-          
-          on_changed do |row, type, row_data|
-            puts "Row #{row} #{type}: #{row_data}"
-            $stdout.flush # for Windows
-          end
-      
-          on_edited do |row, row_data| # only fires on direct table editing
-            puts "Row #{row} edited: #{row_data}"
-            $stdout.flush # for Windows
-          end
         }
       }
     }.show

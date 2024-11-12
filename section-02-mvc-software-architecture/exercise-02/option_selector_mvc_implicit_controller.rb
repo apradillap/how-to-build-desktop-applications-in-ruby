@@ -42,7 +42,7 @@ class OptionSelectorView
         @selected_options_label = label('None')
         
         horizontal_box {
-          checkboxes = 3.times.map do |n|
+          3.times.map do |n|
             option_number = n + 1
             checkbox("Option #{option_number}") {
               on_toggled do

@@ -68,7 +68,7 @@ class AddressFormView
         
         @billing_and_shipping_checkbox = checkbox('Billing & Shipping') {
           on_toggled do
-            @address.billing_and_shipping = @billing_and_shipping_checkbox.checked
+            @address.billing_and_shipping = @billing_and_shipping_checkbox.checked?
           end
         }
         

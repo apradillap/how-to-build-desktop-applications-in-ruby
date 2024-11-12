@@ -39,12 +39,6 @@ class OptionSelectorView
             }
           end
         }
-        
-        button('Reset') {
-          on_clicked do
-            @option_selector_model.reset
-          end
-        }
       }
     }
   end
