@@ -1,12 +1,21 @@
 require 'glimmer-dsl-libui'
 
-# TODO refactor to follow MVP correctly by extracting a presenter or extra model
-class FormTable
-  Contact = Struct.new(:name, :email, :phone, :city, :state)
+Contact = Struct.new(:name, :email, :phone, :city, :state) do
+  def valid?
+    values.map(&:to_s).any?(&:empty?)
+  end
   
-  include Glimmer
-  
-  attr_accessor :contacts, :name, :email, :phone, :city, :state, :filter_value
+  def reset
+    self.name = ''
+    self.email = ''
+    self.phone = ''
+    self.city = ''
+    self.state = ''
+  end
+end
+
+class FormTablePresenter
+  attr_accessor :contacts, :filter_value, :unfiltered_contacts
   
   def initialize
     @contacts = [
@@ -16,6 +25,38 @@ class FormTable
       Contact.new('Darren McGrath', 'darren@mcgrath.com', '206-539-9283', 'Seattle', 'WA'),
       Contact.new('Melody Hanheimer', 'melody@hanheimer.com', '213-493-8274', 'Los Angeles', 'CA'),
     ]
+  end
+  
+  def new_contact
+    @new_contact ||= Contact.new
+  end
+  
+  def save_contact
+    contacts << new_contact.dup # automatically inserts a row into the table due to explicit data-binding
+    self.unfiltered_contacts = contacts.dup
+    new_contact.reset # automatically clears form fields through explicit data-binding
+  end
+  
+  def filter_table
+    self.unfiltered_contacts ||= contacts.dup
+    # Unfilter first to remove any previous filters
+    self.contacts = unfiltered_contacts.dup # affects table indirectly through explicit data-binding
+    # Now, apply filter if entered
+    unless filter_value.empty?
+      self.contacts = contacts.filter do |contact| # affects table indirectly through explicit data-binding
+        contact.members.any? do |attribute|
+          contact[attribute].to_s.downcase.include?(filter_value.downcase)
+        end
+      end
+    end
+  end
+end
+
+class FormTable
+  include Glimmer
+  
+  def initialize
+    @presenter = FormTablePresenter.new
   end
   
   def launch
@@ -28,27 +69,27 @@ class FormTable
           
           entry {
             label 'Name'
-            text <=> [self, :name] # bidirectional data-binding between entry text and self.name
+            text <=> [@presenter.new_contact, :name] # bidirectional data-binding between entry text and @presenter.name
           }
           
           entry {
             label 'Email'
-            text <=> [self, :email]
+            text <=> [@presenter.new_contact, :email]
           }
           
           entry {
             label 'Phone'
-            text <=> [self, :phone]
+            text <=> [@presenter.new_contact, :phone]
           }
           
           entry {
             label 'City'
-            text <=> [self, :city]
+            text <=> [@presenter.new_contact, :city]
           }
           
           entry {
             label 'State'
-            text <=> [self, :state]
+            text <=> [@presenter.new_contact, :state]
           }
         }
         
@@ -56,39 +97,20 @@ class FormTable
           stretchy false
           
           on_clicked do
-            new_row = [name, email, phone, city, state]
-            if new_row.map(&:to_s).include?('')
+            if @presenter.new_contact.valid?
               msg_box_error('Validation Error!', 'All fields are required! Please make sure to enter a value for all fields.')
             else
-              @contacts << Contact.new(*new_row) # automatically inserts a row into the table due to explicit data-binding
-              @unfiltered_contacts = @contacts.dup
-              self.name = '' # automatically clears name entry through explicit data-binding
-              self.email = ''
-              self.phone = ''
-              self.city = ''
-              self.state = ''
+              @presenter.save_contact
             end
           end
         }
         
         search_entry {
           stretchy false
-          # bidirectional data-binding of text to self.filter_value with after_write option
-          text <=> [self, :filter_value,
-            after_write: ->(filter_value) { # execute after write to self.filter_value
-              @unfiltered_contacts ||= @contacts.dup
-              # Unfilter first to remove any previous filters
-              self.contacts = @unfiltered_contacts.dup # affects table indirectly through explicit data-binding
-              # Now, apply filter if entered
-              unless filter_value.empty?
-                self.contacts = @contacts.filter do |contact| # affects table indirectly through explicit data-binding
-                  contact.members.any? do |attribute|
-                    contact[attribute].to_s.downcase.include?(filter_value.downcase)
-                  end
-                end
-              end
-            }
-          ]
+          # bidirectional data-binding of text to @presenter.filter_value, filtering table after writing value to Model
+          text <=> [@presenter, :filter_value,
+                     after_write: ->(filter_value) { @presenter.filter_table }
+                   ]
         }
         
         table {
@@ -99,7 +121,7 @@ class FormTable
           text_column('State')
     
           editable true
-          cell_rows <=> [self, :contacts] # explicit data-binding to self.contacts Model Array, auto-inferring model attribute names from underscored table column names by convention
+          cell_rows <=> [@presenter, :contacts] # explicit data-binding to @presenter.contacts Model Array, auto-inferring model attribute names from underscored table column names by convention
           
           on_changed do |row, type, row_data|
             puts "Row #{row} #{type}: #{row_data}"
