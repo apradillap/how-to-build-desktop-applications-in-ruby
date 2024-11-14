@@ -1,12 +1,15 @@
 require 'glimmer-dsl-libui'
 
 class Address
-  ATTRIBUTES = [:name, :street, :city, :state, :zip]
-  
+  STRING_ATTRIBUTES = [:full_name, :street, :city, :state, :zip]
+  ATTRIBUTES = STRING_ATTRIBUTES + [:billing_and_shipping]
   attr_accessor *ATTRIBUTES
+  alias billing_and_shipping? billing_and_shipping
   
   def summary
-    ATTRIBUTES.map(&method(:send)).compact.reject(&:empty?).join(', ')
+    address_summary = STRING_ATTRIBUTES.map(&method(:send)).compact.reject(&:empty?).join(', ')
+    address_summary += ' (Billing & Shipping)' if billing_and_shipping?
+    address_summary
   end
 end
 
@@ -20,17 +23,21 @@ class AddressFormView
   
   def create_gui_body
     @window = window('Address Form') {
-      content_size 400, 200
+      content_size 500, 20
       margined true
       
       vertical_box {
         form {
-          Address::ATTRIBUTES.each do |attribute|
+          Address::STRING_ATTRIBUTES.each do |attribute|
             entry {
-              label attribute.to_s.capitalize
+              label attribute.to_s.split('_').map(&:capitalize).join(' ')
               text <=> [@address, attribute]
             }
           end
+          
+          checkbox('Billing & Shipping') {
+            checked <=> [@address, :billing_and_shipping]
+          }
         }
         
         label {
