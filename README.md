@@ -1,8 +1,6 @@
 # How To Build Basic Desktop Applications in Ruby
 ## RubyConf 2024 Workshop Code Exercises by Andy Maleh
 
-The full material of this workshop will be released on day 2 of RubyConf 2024 (Thursday, Nov 14, 2024).
-
 Mac | Windows | Linux
 ----|---------|------
 ![glimmer-dsl-libui-mac-control-gallery.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-mac-control-gallery.png) | ![glimmer-dsl-libui-windows-control-gallery.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-windows-control-gallery.png) | ![glimmer-dsl-libui-linux-control-gallery.png](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-libui/master/images/glimmer-dsl-libui-linux-control-gallery.png)
