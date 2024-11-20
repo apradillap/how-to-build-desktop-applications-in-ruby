@@ -20,6 +20,8 @@ Presentation Slides Offline Download Links:
 - PowerPoint: [https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/raw/refs/heads/rubyconf2024/RubyConf%202024%20-%20How%20To%20Build%20Basic%20Desktop%20Applications%20in%20Ruby%20-%20Andy%20Maleh.pptx](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/raw/refs/heads/rubyconf2024/RubyConf%202024%20-%20How%20To%20Build%20Basic%20Desktop%20Applications%20in%20Ruby%20-%20Andy%20Maleh.pptx)
 - PDF: [https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/raw/refs/heads/rubyconf2024/RubyConf%202024%20-%20How%20To%20Build%20Basic%20Desktop%20Applications%20in%20Ruby%20-%20Andy%20Maleh.pdf](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/raw/refs/heads/rubyconf2024/RubyConf%202024%20-%20How%20To%20Build%20Basic%20Desktop%20Applications%20in%20Ruby%20-%20Andy%20Maleh.pdf)
 
+[If you are looking for the RubyConf 2023 longer version of the workshop ("How To Build Desktop Applications in Ruby"), click here!](https://github.com/AndyObtiva/how-to-build-desktop-applications-in-ruby/tree/rubyconf2023)
+
 ## Table of Contents
 
 - [How To Build Desktop Applications in Ruby](#how-to-build-desktop-applications-in-ruby)
